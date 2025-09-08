@@ -36,7 +36,7 @@ export default function Register() {
               required
               placeholder="Enter your email address"
               aria-label="Email address"
-              className="flex-1 h-12 px-4 text-sm outline-none placeholder-[#9B9AA0] bg-white"
+              className="flex-1 h-12 px-4 text-black text-sm outline-none placeholder-[#9B9AA0] bg-white"
             />
             <Button
               type="submit"
