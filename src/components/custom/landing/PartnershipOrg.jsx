@@ -1,18 +1,21 @@
 import { Button } from "@/components/ui/button";
 
-function TierCard({ accent, badge, title, price, features }) {
+function TierCard({ accent, badge, title, price, subtitle, features }) {
   return (
-    <div className="relative rounded-2xl border border-[#E7E7EA] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.06)] overflow-visible">
+    <div className="relative rounded-2xl border border-[#E7E7EA] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.06)] overflow-visible h-full flex flex-col">
       <div className="h-3" style={{ background: accent }} />
       {badge && (
         <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] tracking-wide bg-[#1d191a] text-white px-3 py-1 rounded-full shadow z-10">
           {badge}
         </span>
       )}
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-1">
         <h3 className="text-center font-semibold text-[#1d191a]">{title}</h3>
         <p className="text-center text-[#E2963F] font-bold mt-2">{price}</p>
-        <ul className="mt-4 space-y-3">
+        {subtitle && (
+          <p className="text-center text-[#616065] text-xs md:text-sm mt-2">{subtitle}</p>
+        )}
+        <ul className="mt-4 space-y-3 pt-2 pb-4">
           {features.map((f, i) => (
             <li key={i} className="flex items-start gap-3 text-sm text-[#3d3638]">
               <span className="mt-1 inline-block w-3 h-3 rounded-full border border-[#CCD2FF] bg-[#F5F7FF]" />
@@ -20,7 +23,7 @@ function TierCard({ accent, badge, title, price, features }) {
             </li>
           ))}
         </ul>
-        <Button className="mt-6 w-full bg-[#E2963F] hover:bg-[#E2963F]/90 text-white rounded-md h-10">Learn More</Button>
+        <Button className="mt-auto w-full bg-[#E2963F] hover:bg-[#E2963F]/90 text-white rounded-md h-10">Learn More</Button>
       </div>
     </div>
   );
@@ -40,45 +43,46 @@ export default function PartnershipOrg() {
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
             <TierCard
-              accent="linear-gradient(90deg,#F3B08E,#E68064)"
-              badge="MOST POPULAR"
-              title="Presenting Partner"
-              price="$25,000+"
-              features={[
-                "Logo on all tour materials",
-                "Speaking opportunity at every stop",
-                "Dedicated recruitment booth",
-                "Custom workshop or presentation",
-                "Year-round partnership recognition",
-                "Access to talent pipeline",
-              ]}
-            />
-
-            <TierCard
               accent="linear-gradient(90deg,#97A7C3,#6D7D97)"
-              title="City Sponsor"
-              price="$10,000+"
+              badge="MOST POPULAR"
+              title="🌆 City Sponsor"
+              price="$3,000"
+              subtitle="Best for employers looking to lead local inclusive hiring efforts"
               features={[
                 "Title sponsor for one city",
-                "Speaking slot in sponsored city",
-                "Recruitment table",
-                "Logo on city-specific materials",
-                "Social media recognition",
-                "Networking event access",
+                "Speaking opportunity at local stop",
+                "Recruitment table access",
+                "Logo on all local materials",
+                "Featured in press & social media",
+                "VIP access to networking events",
+                "Year-round recognition & job listing priority",
               ]}
             />
 
             <TierCard
               accent="linear-gradient(90deg,#F2C972,#E7A43E)"
-              title="Supporting Partner"
-              price="$5,000+"
+              title="🤝 Community Partner"
+              price="$1,000"
+              subtitle="Ideal for employers ready to build brand presence"
               features={[
-                "Logo in tour program",
                 "Booth at select events",
-                "Job posting opportunities",
-                "Newsletter mentions",
+                "Logo in event program",
+                "Job posting access for 3 roles",
+                "Newsletter & social media shout-out",
                 "Community recognition",
-                "Volunteer coordination",
+              ]}
+            />
+
+            <TierCard
+              accent="linear-gradient(90deg,#F3B08E,#E68064)"
+              title="🌱 Supporter"
+              price="$500"
+              subtitle="Perfect for first-time collaborators and inclusive employers"
+              features={[
+                "Logo on supporter board",
+                "1 job posting slot",
+                "Access to talent mailing list",
+                "Listed on partner thank-you page",
               ]}
             />
           </div>
@@ -106,10 +110,6 @@ export default function PartnershipOrg() {
               </div>
               <h4 className="mt-3 font-medium text-[#1d191a]">Volunteer</h4>
               <p className="mt-2 text-sm text-[#616065]">Help us create amazing experiences in your city</p>
-              <div className="mt-4 text-[#E2963F] text-sm font-medium inline-flex items-center gap-2 justify-center">
-                <span>Sign Up</span>
-                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M13 5l7 7-7 7M5 12h14"/></svg>
-              </div>
             </div>
 
             {/* Spread the Word */}
@@ -121,10 +121,6 @@ export default function PartnershipOrg() {
               </div>
               <h4 className="mt-3 font-medium text-[#1d191a]">Spread the Word</h4>
               <p className="mt-2 text-sm text-[#616065]">Share our mission with your network</p>
-              <div className="mt-4 text-[#E2963F] text-sm font-medium inline-flex items-center gap-2 justify-center">
-                <span>Share</span>
-                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M13 5l7 7-7 7M5 12h14"/></svg>
-              </div>
             </div>
 
             {/* Attend */}
@@ -136,10 +132,6 @@ export default function PartnershipOrg() {
               </div>
               <h4 className="mt-3 font-medium text-[#1d191a]">Attend</h4>
               <p className="mt-2 text-sm text-[#616065]">Join us at a tour stop near you</p>
-              <div className="mt-4 text-[#E2963F] text-sm font-medium inline-flex items-center gap-2 justify-center">
-                <span>Register</span>
-                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M13 5l7 7-7 7M5 12h14"/></svg>
-              </div>
             </div>
 
             {/* Corporate Partnership */}
@@ -152,10 +144,6 @@ export default function PartnershipOrg() {
               </div>
               <h4 className="mt-3 font-medium text-[#1d191a]">Corporate Partnership</h4>
               <p className="mt-2 text-sm text-[#616065]">Partner with us to make lasting impact</p>
-              <div className="mt-4 text-[#E2963F] text-sm font-medium inline-flex items-center gap-2 justify-center">
-                <span>Contact Us</span>
-                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M13 5l7 7-7 7M5 12h14"/></svg>
-              </div>
             </div>
           </div>
         </div>

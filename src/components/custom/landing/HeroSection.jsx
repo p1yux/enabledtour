@@ -68,7 +68,7 @@ export default function HeroSection() {
             </span>
           </Button>
 
-          <div className="py-14 w-full lg:w-6xl">
+          <div className="py-14 w-full mt-10 lg:w-6xl">
             <img src="images/hero/video.png" alt="Video" className="w-full h-auto" />
           </div>
         </div>
